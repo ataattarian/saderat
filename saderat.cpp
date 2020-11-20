@@ -12,6 +12,7 @@ public:
     weight=w;
     price=p;
   }
+  ‍‍‍‍‍‍~saderat();
   void get(char n,int c, float w,float p);
 
 
