@@ -1,17 +1,22 @@
 #include<iostream>
 #include<conio.h>
-#include<string>
-#include<strin.h>
 using name space std;
 
 
 clas saderat{
 public:
-  
+  ///////////////تابع سازنده///////////////
+  saderat(char n,int c, float w,float p){
+    name=n;
+    code_saderat=c;
+    weight=w;
+    price=p;
+  }
+
 
 
 private:
-  string name;
+  char name;
   int code_sadert;
   float weight;
   float price;
