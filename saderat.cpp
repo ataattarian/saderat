@@ -14,6 +14,7 @@ public:
   }
   ‍‍‍‍‍‍~saderat();
   void get(char n,int c, float w,float p);
+  char retname();
 
 
 
@@ -30,4 +31,8 @@ void saderat::get(char n,int c, float w,float p){
   code_saderat=c;
   weight=w;
   price=p;
+}
+////////////////////نام کالا رو برمیگرداند/////////////////////
+char saderat::retname(){
+  return name;
 }
