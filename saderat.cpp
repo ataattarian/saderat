@@ -13,6 +13,8 @@ public:
   ‍‍‍‍‍‍~saderat();
   void get(char n,int c, float w,float p);
   char retname();
+  float reweight();
+  float reprice();
 
 private:
   char name;
@@ -31,7 +33,15 @@ void saderat::get(char n,int c, float w,float p){
 char saderat::retname(){
   return name;
 }
-/////////////تابع برای یافتن کالا با بیشترین صادرات //////////////
+///////////////////حجم کالا رو برمیگرداند/////////////////////
+float saderat::retweight(){
+  return weight;
+}
+//////////////////قیمت مالا رو برمیگرداند/////////////////////
+float saderat::reprice(){
+  return price;
+}
+////////////تابع برای یافتن کالا با بیشترین حجم صادرات///////////
 char max_export(saderat m[100]){
   char name[100],test;
   int i=0,j=0, number[100];
@@ -39,7 +49,7 @@ char max_export(saderat m[100]){
     test=m[i].retname();
     if (checkname(test,name[100],j)==0){
       name[j]=test;
-      number[j]=num(name[j],m[100],j);
+      number[j]=num(name[j],m[100]);
       j++;
     }
     else{
@@ -61,12 +71,12 @@ int checkname(char t,char n[100],int j){
   }
   return 0;
 }
-///////////////تعداد یک کالا را بررسی میکند/////////////////
-int num(char t,char n[100],int j){
+//////////////حجم یک نوع کالا رو برسی میکنه/////////////////
+int num(char t,char n[100]){
   int count=0;
   for(int i=0;i<100;i++){
     if(t==n[i].retname()){
-      count++;
+      count=count+n[i].retweight();
     }
     else{
       continue;
@@ -74,7 +84,7 @@ int num(char t,char n[100],int j){
   }
   return count;
 }
-//////////////یافتن بیشترین تکرار کالا ////////////////
+/////////////یافتن کالا با بیشترین حجم////////////////
 int checkrep(int num[100],int k){
   int i=0,j=0,b=0;
   for(i=0;i<k;i++){
