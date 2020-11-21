@@ -15,6 +15,7 @@ public:
   char retname();
   float reweight();
   float reprice();
+  float total();
 
 private:
   char name;
@@ -37,19 +38,25 @@ char saderat::retname(){
 float saderat::retweight(){
   return weight;
 }
-//////////////////قیمت مالا رو برمیگرداند/////////////////////
+//////////////////قیمت کالا رو برمیگرداند/////////////////////
 float saderat::reprice(){
   return price;
 }
+//////////////////قیمت کل کالا/////////////////////
+float saderat::total(){
+  float totalp=1;
+  totalp=weight*price;
+  return totalp;
+}
 ////////////تابع برای یافتن کالا با بیشترین حجم صادرات///////////
-char max_export(saderat m[100]){
+char max_export(saderat list[100]){
   char name[100],test;
   int i=0,j=0, number[100];
   for(i=0;i<100;i++){
-    test=m[i].retname();
+    test=list[i].retname();
     if (checkname(test,name[100],j)==0){
       name[j]=test;
-      number[j]=num(name[j],m[100]);
+      number[j]=num(name[j],list[100]);
       j++;
     }
     else{
@@ -72,11 +79,11 @@ int checkname(char t,char n[100],int j){
   return 0;
 }
 //////////////حجم یک نوع کالا رو برسی میکنه/////////////////
-int num(char t,char n[100]){
+int num(char t,saderat list[100]){
   int count=0;
   for(int i=0;i<100;i++){
-    if(t==n[i].retname()){
-      count=count+n[i].retweight();
+    if(t==list[i].retname()){
+      count=count+list[i].retweight();
     }
     else{
       continue;
@@ -97,4 +104,12 @@ int checkrep(int num[100],int k){
     }
   }
   return j;
+}
+////////////تابع برای محاسبه مجموعه ارزش صادرات////////////////
+float exportvalue(saderat list[100]){
+  float total_price=0;
+  for(int i=0;i<100;i++){
+    total_price=total_price+list[i].total();
+  }
+  return total_price;
 }
