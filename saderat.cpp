@@ -1,32 +1,35 @@
 #include<iostream>
-#include<conio.h>
-using name space std;
-clas saderat{
+
+#include <stdlib.h>
+using namespace std;
+class saderat{
 public:
   ////////////////////تابع سازنده//////////////////////
   saderat(char n='n',int c=0, float w=0,float p=0){
     name=n;
-    code_saderat=c;
+    code_sadert=c;
     weight=w;
     price=p;
-  }
-  ‍‍‍‍‍‍~saderat();
+  };
   void get(char n,int c, float w,float p);
   char retname();
   float reweight();
   float reprice();
   float total();
-
-private:
   char name;
   int code_sadert;
   float weight;
   float price;
 };
+
+char max_export(saderat list[100]);
+int checkname(char t,char n[100],int j);
+int num(char t,saderat list[100]);
+int checkrep(int num[100],int k);
 ///////////داده ها رو از کاربر گرفته و ذخیره میکنه/////////////
 void saderat::get(char n,int c, float w,float p){
   name=n;
-  code_saderat=c;
+  code_sadert=c;
   weight=w;
   price=p;
 }
@@ -35,7 +38,7 @@ char saderat::retname(){
   return name;
 }
 ///////////////////حجم کالا رو برمیگرداند/////////////////////
-float saderat::retweight(){
+float saderat::reweight(){
   return weight;
 }
 //////////////////قیمت کالا رو برمیگرداند/////////////////////
@@ -54,16 +57,16 @@ char max_export(saderat list[100]){
   int i=0,j=0, number[100];
   for(i=0;i<100;i++){
     test=list[i].retname();
-    if (checkname(test,name[100],j)==0){
+    if (checkname(test,name,j)==0){
       name[j]=test;
-      number[j]=num(name[j],list[100]);
+      number[j]=num(name[j],list);
       j++;
     }
     else{
       continue;
     }
   }
-  i=checkrep(number[100],j);
+  i=checkrep(number,j);
   return name[i];
 }
 ///////////////بررسی میکند اسم کالا تکراری نباشد/////////////////
@@ -83,7 +86,7 @@ int num(char t,saderat list[100]){
   int count=0;
   for(int i=0;i<100;i++){
     if(t==list[i].retname()){
-      count=count+list[i].retweight();
+      count=count+list[i].reweight();
     }
     else{
       continue;
@@ -112,4 +115,14 @@ float exportvalue(saderat list[100]){
     total_price=total_price+list[i].total();
   }
   return total_price;
+}
+/////////////////main تابع/////////////////////
+int main(){
+  saderat list[100];
+  for(int i=0;i<100;i++){
+    list[i].weight=rand();
+    list[i].price=rand();
+    list[i].code_sadert=rand();
+  }
+  return 0;
 }
