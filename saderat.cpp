@@ -26,6 +26,7 @@ char max_export(saderat list[100]);
 int checkname(char t,char n[100],int j);
 int num(char t,saderat list[100]);
 int checkrep(int num[100],int k);
+char raandchar();
 ///////////داده ها رو از کاربر گرفته و ذخیره میکنه/////////////
 void saderat::get(char n,int c, float w,float p){
   name=n;
@@ -120,9 +121,20 @@ float exportvalue(saderat list[100]){
 int main(){
   saderat list[100];
   for(int i=0;i<100;i++){
-    list[i].weight=rand();
-    list[i].price=rand();
+    list[i].name=raandchar();
+    list[i].weight=rand()%3001;
+    list[i].price=rand()%3001;
     list[i].code_sadert=rand();
   }
+  
   return 0;
+}
+//////////////تابع برای محاسبه رندم یک کاراکتر///////////////
+char raandchar(){
+  int i=rand()%27;
+  char all_characters[26] = {
+      'a','b','c','d','e','f','g','h','i','j','k','l','m',
+     'n','o','p','q','r','s','t','u','v','w','x','y','z'
+  };
+  return all_characters[i];
 }
